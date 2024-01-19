@@ -46,7 +46,7 @@ modules:
     build-commands:
       - install apply_extra ${FLATPAK_DEST}/bin
       - install -Dm755 logic.sh ${FLATPAK_DEST}/bin/${FLATPAK_ID}
-      - install -Dm644 ${FLATPAK_ID}.appdata.xml ${FLATPAK_DEST}/share/appdata/${FLATPAK_ID}.appdata.xml
+      - install -Dm644 ${FLATPAK_ID}.metainfo.xml ${FLATPAK_DEST}/share/appdata/${FLATPAK_ID}.metainfo.xml
       - install -Dm644 ${FLATPAK_ID}-256.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/${FLATPAK_ID}.svg
       - install -Dm644 ${FLATPAK_ID}.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
       - desktop-file-edit --set-key="Icon" --set-value="${FLATPAK_ID}" ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
@@ -71,6 +71,6 @@ modules:
       - type: file
         path: com.saleae.Logic.desktop
       - type: file
-        path: com.saleae.Logic.appdata.xml
+        path: com.saleae.Logic.metainfo.xml
       - type: file
         path: com.saleae.Logic-256.png

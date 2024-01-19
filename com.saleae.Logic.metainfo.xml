@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>com.saleae.Logic.desktop</id>
+  <name>Logic</name>
+  <project_license>LicenseRef-proprietary</project_license>
+  <developer_name>Saleae Inc.</developer_name>
+  <project_group>Saleae Inc.</project_group>
+  <summary>Saleae Logic Analyzer companion software</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <url type="homepage">https://www.saleae.com</url>
+  <url type="help">https://support.saleae.com</url>
+  <launchable type="desktop-id">com.saleae.Logic.desktop</launchable>
+  <description>
+    <p>NOTE: This application is not useful on its own and requires the purchase of Saleae Logic Analyzer hardware.</p>
+    <p>Effortlessly decode protocols like SPI, I2C, Serial, and many more. Leverage community created analyzers or build your own low-level or high-level protocol analyzer.</p>
+    <p>Debugging that just works. Stable, easy to use, and fully cross platform, Logic 2 makes it dirt simple to capture, visualize, and search your signals.</p>
+    <p>Explore your board-level comms interactively with Live Trigger on Protocol and Protocol Search. Unlike a scope, all your traffic is being recorded — you can always stop and analyze exactly what happened and why.</p>
+    <p>Verify behavior instantly with measurements wherever you point your mouse. You can even create your own measurements or use ones from the community.</p>
+    <p>Take on any comms challenge by creating your own low-level protocol analyzer, high-level protocol analyzer, or measurement. And if you like, you can easily share your extension with the Saleae community.</p>
+    <p>NOTE: This wrapper is not verified by, affiliated with, or supported by Saleae, Inc.</p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image type="source">https://www.saleae.com/images/content/home/features/protocol-decoders.jpg</image>
+    </screenshot>
+  </screenshots>
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </supports>
+  <categories>
+    <category>Electronics</category>
+  </categories>
+  <content_rating type="oars-1.1">
+    <content_attribute id="social-info">intense</content_attribute>
+  </content_rating>
+  <update_contact>evan_at_eaanderson.com</update_contact>
+  <releases>
+    <release version="2.4.13" date="2023-11-28">
+      <description>
+        <p>Welcome to the 2.4.13 release of Logic! This release contains a lot of changes under the hood, especially to how we save and load files.</p>
+        <p>Older files will load just fine, but files saved with 2.4.13 will not load into older versions of Logic.</p>
+        <p>If you run into any troubles with the release, please be sure to let us know.</p>
+        <p>Also, thanks to many of you for the feedback on the UI changes in the last release! We’re reviewing that now and I expect to incorporate some of the feedback in the next release.</p>
+        <p>What's New</p>
+	<ul>
+          <l>Added support for the latest Logic Pro 8 hardware revision. This new revision use a slightly different FPGA part number, due to supply chain issues from last year.</l>
+        </ul>
+        <p>Bug Fixes</p>
+        <ul>
+          <l>Fixed the Linux 4GB memory limit. We are now using a custom build of Electron on that platform to solve the issue.</l>
+          <l>Fixed the crash when changing the IO voltage level on the original Logic 16.</l>
+          <l>Fixed the crash on Linux when opening the software with a device already attached.</l>
+        </ul>
+      </description>
+      <url>https://ideas.saleae.com/f/changelog/2413/</url>
+    </release>
+  </releases>
+</component>

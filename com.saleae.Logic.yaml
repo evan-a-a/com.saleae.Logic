@@ -1,0 +1,76 @@
+app-id: com.saleae.Logic
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+base: org.electronjs.Electron2.BaseApp
+base-version: '23.08'
+command: com.saleae.Logic
+separate-locales: false
+build-options:
+  no-debuginfo: true
+tags:
+  - proprietary
+finish-args:
+  - --device=all
+  - --share=ipc
+  - --share=network
+  - --socket=pulseaudio
+  - --socket=x11
+  - --filesystem=home
+  - --filesystem=/etc/udev/rules.d
+modules:
+  - name: unappimage
+    buildsystem: simple
+    build-commands:
+      - make -C squashfs-tools install INSTALL_DIR=/app/bin
+    sources:
+      - type: git
+        url: https://github.com/refi64/unappimage
+        commit: d7f86f2a0d7ec3a69211125207d5f127386b849a
+
+  - name: libxcrypt
+    config-opts:
+      - --prefix=/app
+      - --enable-shared
+      - --enable-obsolete-api=glibc
+      - --disable-static
+    sources:
+      - type: archive
+        url: https://github.com/besser82/libxcrypt/releases/download/v4.4.36/libxcrypt-4.4.36.tar.xz
+        sha256: e5e1f4caee0a01de2aee26e3138807d6d3ca2b8e67287966d1fefd65e1fd8943
+    cleanup:
+      - /include
+
+  - name: logic
+    buildsystem: simple
+    build-commands:
+      - install apply_extra ${FLATPAK_DEST}/bin
+      - install -Dm755 logic.sh ${FLATPAK_DEST}/bin/${FLATPAK_ID}
+      - install -Dm644 ${FLATPAK_ID}.appdata.xml ${FLATPAK_DEST}/share/appdata/${FLATPAK_ID}.appdata.xml
+      - install -Dm644 ${FLATPAK_ID}-256.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/${FLATPAK_ID}.svg
+      - install -Dm644 ${FLATPAK_ID}.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
+      - desktop-file-edit --set-key="Icon" --set-value="${FLATPAK_ID}" ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
+      - desktop-file-edit --set-key="Exec" --set-value="${FLATPAK_ID} %U" ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
+      - desktop-file-edit --set-key="X-Flatpak-RenamedFrom" --set-value="logic.desktop;" ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
+    sources:
+      - type: extra-data
+        url: https://downloads.saleae.com/logic2/Logic-2.4.13-linux-x64.AppImage
+        sha256: d0621940a4036376ab0d49718d02963870c1de3efac55c24c791fef2af9dd117
+        filename: logic.appimage
+        size: 169502804
+      - type: script
+        dest-filename: apply_extra
+        commands:
+          - unappimage logic.appimage
+          - rm logic.appimage
+          - mv squashfs-root/* .
+          - rm squashfs-root/.*
+          - rmdir squashfs-root
+      - type: file
+        path: logic.sh
+      - type: file
+        path: com.saleae.Logic.desktop
+      - type: file
+        path: com.saleae.Logic.appdata.xml
+      - type: file
+        path: com.saleae.Logic-256.png

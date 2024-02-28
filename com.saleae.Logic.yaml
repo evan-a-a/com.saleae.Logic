@@ -54,10 +54,10 @@ modules:
       - desktop-file-edit --set-key="X-Flatpak-RenamedFrom" --set-value="logic.desktop;" ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
     sources:
       - type: extra-data
-        url: https://downloads.saleae.com/logic2/Logic-2.4.13-linux-x64.AppImage
-        sha256: d0621940a4036376ab0d49718d02963870c1de3efac55c24c791fef2af9dd117
+        url: https://downloads.saleae.com/logic2/Logic-2.4.14-linux-x64.AppImage
+        sha256: aa215313cfc09f4ba6fde3fea30b44f1f7025f41279d3834d12d87e8e04edfc8
         filename: logic.appimage
-        size: 169502804
+        size: 187591212
       - type: script
         dest-filename: apply_extra
         commands:

@@ -37,6 +37,26 @@
   </content_rating>
   <update_contact>evan_at_eaanderson.com</update_contact>
   <releases>
+	  <release version="2.4.14" date="2024-02-26">
+      <p>It’s been a little while since the last release. Most of our development efforts continue to be focused on functionality we’re not ready to announce, and in the meantime, releases tend to be on the lighter side.</p>
+      <p>Thanks everyone for the feedback on the toolbar. We’ve reduced the toolbar height by a total of 36 pixels, by making the design more compact, and removing some recently added height from the timing display. As always, please leave your feedback!</p>
+      <p>Improvements</p>
+      <ul>
+        <li>Updated the toolbar and timing display at the top of the application to save space to display more channels at once.</li>
+        <li>Moved the device settings back into the sidebar.</li>
+        <li>Removed the lower-right corner menu. The top of window/top of screen menu is now the main menu.</li>
+        <li>Improved onboarding dialog for first time users.</li>
+        <li>Improved session placeholder, which is displayed when no tabs are open.</li>
+        <li>Added support for the latest hardware revision of the Logic 8. This is the last planned hardware revision change. Let’s all pray that we don’t see another supply chain shortage for a good long while.</li>
+      </ul>
+      <p>Bug Fixes</p>
+      <ul>
+        <li>Fixed issue with automation API where when calling the start capture command, the capture would not actually start until slightly after the command returned. This could lead to missing what you are looking for. Now the device is guaranteed to start recording before the start command returns.</li>
+        <li>Updated the Electron version, which among many small things improves rendering reliability on Linux.</li>
+        <li>Fixed a bug where on Linux the application would crash when recording 1 digital channel at 1 MS/s.</li>
+      </ul>
+      <url>https://ideas.saleae.com/f/changelog/2414/</url>
+    </release>
     <release version="2.4.13" date="2023-11-28">
       <description>
         <p>Welcome to the 2.4.13 release of Logic! This release contains a lot of changes under the hood, especially to how we save and load files.</p>
@@ -45,13 +65,13 @@
         <p>Also, thanks to many of you for the feedback on the UI changes in the last release! We’re reviewing that now and I expect to incorporate some of the feedback in the next release.</p>
         <p>What's New</p>
 	<ul>
-          <l>Added support for the latest Logic Pro 8 hardware revision. This new revision use a slightly different FPGA part number, due to supply chain issues from last year.</l>
+          <li>Added support for the latest Logic Pro 8 hardware revision. This new revision use a slightly different FPGA part number, due to supply chain issues from last year.</li>
         </ul>
         <p>Bug Fixes</p>
-        <ul>
-          <l>Fixed the Linux 4GB memory limit. We are now using a custom build of Electron on that platform to solve the issue.</l>
-          <l>Fixed the crash when changing the IO voltage level on the original Logic 16.</l>
-          <l>Fixed the crash on Linux when opening the software with a device already attached.</l>
+	<ul>
+          <li>Fixed the Linux 4GB memory limit. We are now using a custom build of Electron on that platform to solve the issue.</li>
+          <li>Fixed the crash when changing the IO voltage level on the original Logic 16.</li>
+          <li>Fixed the crash on Linux when opening the software with a device already attached.</li>
         </ul>
       </description>
       <url>https://ideas.saleae.com/f/changelog/2413/</url>
